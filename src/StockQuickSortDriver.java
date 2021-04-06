@@ -58,10 +58,11 @@ public class StockQuickSortDriver {
     private static Stock[] readStocks(String fileName) {
         FileIO file = new FileIO(fileName, FileIO.FOR_READING);
         ArrayList<Stock> stocks = new ArrayList<>();
-        String row = file.readLine(); // Reads the headers of the dataset file
+        String row = file.readLine();
+        // Reads the headers of the dataset file
         // Now we start reading each of the data records
-        while (!file.EOF()) {
-            row = file.readLine();
+        while ((row = file.readLine()) != null) {
+            //row = file.readLine();
             String[] stock_data = row.split(",");
             String company_name = stock_data[0];
             double open_price = Double.parseDouble(stock_data[1]);
